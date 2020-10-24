@@ -46,12 +46,9 @@ public class PageController {
 
         if (pageService.findByAddress(page.getAddress()) == null){
             pageService.save(page);
-        } else {
-            return String.format("redirect:/%d",  pageService.findByAddress(page.getAddress()).getId());
+            pageService.parse(page);
         }
-
-        pageService.parse(page);
-        return "page";
+        return String.format("redirect:/%d",  pageService.findByAddress(page.getAddress()).getId());
     }
 
     @GetMapping("/{id}")
