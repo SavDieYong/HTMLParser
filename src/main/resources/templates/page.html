@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+<body>
+<div th:switch="${words}">
+    <p><a href="/pages">All pages</a></p>
+    <p><a href="/parse">Parse new page</a></p>
+    <h2 th:case="null">No words found!</h2>
+    <div th:case="*">
+        <h2>Count words</h2>
+        <table>
+            <thead>
+            <th>Word</th>
+            <th>Count</th>
+            </thead>
+            <tbody>
+            <tr th:each="word: ${words}">
+                <td th:text="${word.getBody()}"></td>
+                <td th:text="${word.getCount()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
