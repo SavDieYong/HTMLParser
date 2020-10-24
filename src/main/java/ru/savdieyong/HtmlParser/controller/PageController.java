@@ -46,6 +46,7 @@ public class PageController {
 
         if (pageService.findByAddress(page.getAddress()) == null){
             pageService.save(page);
+            pageService.downloadPage(page);
             pageService.parse(page);
         }
         return String.format("redirect:/%d",  pageService.findByAddress(page.getAddress()).getId());
