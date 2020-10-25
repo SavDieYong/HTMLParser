@@ -6,7 +6,7 @@
 </head>
 <body>
     <div th:switch="${pages}">
-        <p><a href="/parse">Parse new page</a></p>
+        <p><a href="/parser">Parse new page</a></p>
         <h2 th:case="null">No pages found!</h2>
         <div th:case="*">
             <h2>All pages</h2>
@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="page: ${pages}">
-                    <td><a th:href="@{/{id}(id=${page.getId()})}" th:text="${page.getAddress()}"></a></td>
+                    <td><a th:href="@{words/{id}(id=${page.getId()})}" th:text="${page.getAddress()}"></a></td>
                 </tr>
                 </tbody>
             </table>

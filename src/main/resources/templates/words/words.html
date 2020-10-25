@@ -7,7 +7,7 @@
 <body>
 <div th:switch="${words}">
     <p><a href="/pages">All pages</a></p>
-    <p><a href="/parse">Parse new page</a></p>
+    <p><a href="/parser">Parse new page</a></p>
     <h2 th:case="null">No words found!</h2>
     <div th:case="*">
         <h2>Count words</h2>

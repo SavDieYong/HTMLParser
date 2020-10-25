@@ -6,7 +6,7 @@
 </head>
 <body>
     <p><a href="/pages">All pages</a></p>
-    <form th:action="@{/parse}" th:object="${page}" method="post">
+    <form th:action="@{parser/parse}" th:object="${page}" method="post">
         <label for="address">Address</label>
         <input type="text" th:field="*{address}" id="address" placeholder="https://www.example.com">
         <input type="submit" value="Parse">
