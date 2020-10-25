@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * @Author Savelyev A.D.
+ */
+
 @Service
 public class ParserService {
 
@@ -26,6 +30,7 @@ public class ParserService {
         this.wordService = wordService;
     }
 
+    //Read html file and remove all html tags
     public void parse(Page page) throws IOException {
         downloadPage(page);
         List<String> words = new ArrayList<>();
@@ -43,6 +48,7 @@ public class ParserService {
         countDuplicate(page, words);
     }
 
+    //Counting duplicates of each unique word on site
     private void countDuplicate(Page page, List<String> words) {
         Map<String, Long> map = words.stream()
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
@@ -56,7 +62,7 @@ public class ParserService {
 
     }
 
-
+    //Write html file
     private void downloadPage(Page page) throws IOException {
         File directory = new File(PATH);
         fileName = getDomain(page);
@@ -76,6 +82,7 @@ public class ParserService {
         }
     }
 
+    //Remove protocol for name html file
     private String getDomain(Page page) {
         return page.getAddress()
                 .replace("https://", "");

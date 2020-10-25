@@ -12,6 +12,10 @@ import ru.savdieyong.HtmlParser.service.ParserService;
 import javax.validation.Valid;
 import java.io.IOException;
 
+/**
+ * @Author Savelyev A.D.
+ */
+
 @Controller
 @RequestMapping("/parser")
 public class ParserController {
@@ -31,6 +35,7 @@ public class ParserController {
 
 
     @PostMapping("")
+    //Saving and counting duplicates of each unique word on the site
     public String parse(@Valid Page page, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "parser/parse";

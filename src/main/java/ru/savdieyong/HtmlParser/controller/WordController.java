@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.savdieyong.HtmlParser.service.PageService;
 import ru.savdieyong.HtmlParser.service.WordService;
 
+/**
+ * @Author Savelyev A.D.
+ */
+
 @Controller
 @RequestMapping("/words")
 public class WordController {
@@ -21,6 +25,7 @@ public class WordController {
     }
 
     @GetMapping("/{id}")
+    ////Get all words on page and pass them to the view
     public String getAllWordsAtPage(@PathVariable Long id, Model model) {
         model.addAttribute("page", pageService.findById(id));
         model.addAttribute("words", wordService.findByPageId(id));

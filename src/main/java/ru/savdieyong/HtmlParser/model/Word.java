@@ -7,6 +7,10 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 
+/**
+ * @Author Savelyev A.D.
+ */
+
 @Data
 @Entity
 @Table(name = "words")

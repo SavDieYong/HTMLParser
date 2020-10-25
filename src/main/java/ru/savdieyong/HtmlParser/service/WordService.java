@@ -7,6 +7,10 @@ import ru.savdieyong.HtmlParser.repository.WordRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @Author Savelyev A.D.
+ */
+
 @Service
 public class WordService {
 
