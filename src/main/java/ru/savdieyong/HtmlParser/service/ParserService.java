@@ -22,8 +22,8 @@ public class ParserService {
     private final static String PATH = "src/main/resources/pages/";
     private String fileName;
 
-    public ParserService(WordService wordService, WordService wordService1) throws IOException {
-        this.wordService = wordService1;
+    public ParserService(WordService wordService){
+        this.wordService = wordService;
     }
 
     public void parse(Page page) throws IOException {
@@ -32,8 +32,8 @@ public class ParserService {
         fileName = getDomain(page);
         String line;
         BufferedReader bufferedReader = new BufferedReader(
-                new FileReader(PATH+fileName+".html"));
-        while ((line=bufferedReader.readLine())!=null){
+                new FileReader(PATH + fileName + ".html"));
+        while ((line = bufferedReader.readLine()) != null) {
             Document doc = Jsoup.parse(line);
             words = Arrays.asList(doc.text()
                     .toUpperCase()
@@ -60,7 +60,7 @@ public class ParserService {
     private void downloadPage(Page page) throws IOException {
         File directory = new File(PATH);
         fileName = getDomain(page);
-        if (!directory.exists()){
+        if (!directory.exists()) {
             directory.mkdir();
         }
 

@@ -16,23 +16,23 @@ public class WordService {
         this.wordRepository = wordRepository;
     }
 
-    public Word findById(Long id){
+    public Word findById(Long id) {
         return wordRepository.getOne(id);
     }
 
-    public List<Word> findAll(){
+    public List<Word> findAll() {
         return wordRepository.findAll();
     }
 
-    public void save(Word word){
+    public void save(Word word) {
         wordRepository.save(word);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         wordRepository.deleteById(id);
     }
 
-    public List<Word> findByPageId(Long id){
+    public List<Word> findByPageId(Long id) {
         return wordRepository.findAll()
                 .stream()
                 .filter(page -> page.getPage().getId().equals(id))

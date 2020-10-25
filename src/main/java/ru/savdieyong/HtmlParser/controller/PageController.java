@@ -3,11 +3,9 @@ package ru.savdieyong.HtmlParser.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.savdieyong.HtmlParser.model.Page;
 import ru.savdieyong.HtmlParser.service.PageService;
-import ru.savdieyong.HtmlParser.service.WordService;
 
 import java.util.List;
 
@@ -23,14 +21,9 @@ public class PageController {
 
     @GetMapping("")
     //Get all pages and pass them to the view
-    public String getAllPages(Model model){
+    public String getAllPages(Model model) {
         List<Page> pages = pageService.findAll();
         model.addAttribute("pages", pages);
         return "pages/pages";
     }
-
-
-
-
-
 }

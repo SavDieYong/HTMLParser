@@ -21,7 +21,7 @@ public class WordController {
     }
 
     @GetMapping("/{id}")
-    public String getAllWordsAtPage(@PathVariable Long id, Model model){
+    public String getAllWordsAtPage(@PathVariable Long id, Model model) {
         model.addAttribute("page", pageService.findById(id));
         model.addAttribute("words", wordService.findByPageId(id));
         return "words/words";

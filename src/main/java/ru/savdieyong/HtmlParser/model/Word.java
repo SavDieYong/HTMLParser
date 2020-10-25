@@ -1,6 +1,9 @@
 package ru.savdieyong.HtmlParser.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
 

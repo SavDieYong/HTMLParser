@@ -25,18 +25,18 @@ public class ParserController {
     }
 
     @GetMapping("")
-    public String createParseForm(Page page){
+    public String createParseForm(Page page) {
         return "parser/parse";
     }
 
 
     @PostMapping("")
     public String parse(@Valid Page page, BindingResult bindingResult) throws IOException {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "parser/parse";
         }
 
-        if (pageService.findByAddress(page.getAddress()) == null){
+        if (pageService.findByAddress(page.getAddress()) == null) {
             pageService.save(page);
             parserService.parse(page);
         }
