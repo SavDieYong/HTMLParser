@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.savdieyong.HtmlParser.model.Page;
 import ru.savdieyong.HtmlParser.service.PageService;
+import ru.savdieyong.HtmlParser.service.ParserService;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -16,9 +17,11 @@ import java.io.IOException;
 public class ParserController {
 
     private final PageService pageService;
+    private final ParserService parserService;
 
-    public ParserController(PageService pageService) {
+    public ParserController(PageService pageService, ParserService parserService) {
         this.pageService = pageService;
+        this.parserService = parserService;
     }
 
     @GetMapping("")
@@ -35,9 +38,9 @@ public class ParserController {
 
         if (pageService.findByAddress(page.getAddress()) == null){
             pageService.save(page);
-            pageService.downloadPage(page);
-            pageService.parse(page);
+            parserService.parse(page);
         }
-        return String.format("redirect:pages/%d",  pageService.findByAddress(page.getAddress()).getId());
+        return String.format("redirect:/words/%d",
+                pageService.findByAddress(page.getAddress()).getId());
     }
 }
